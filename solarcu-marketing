@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Solarcu — Smart Solar Calculator</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+      background:#f4fff6;
+      color:#111;
+      overflow-x:hidden;
+    }
+
+    header{
+      min-height:100vh;
+      background:
+      linear-gradient(135deg,#eaffef,#ffffff);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:40px;
+    }
+
+    .hero{
+      max-width:1200px;
+      width:100%;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:60px;
+      align-items:center;
+    }
+
+    .hero-text h1{
+      font-size:72px;
+      line-height:1;
+      margin-bottom:25px;
+      font-weight:800;
+      background:linear-gradient(90deg,#18b34a,#0f5132);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .hero-text p{
+      font-size:22px;
+      line-height:1.7;
+      color:#444;
+      margin-bottom:35px;
+    }
+
+    .buttons{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:18px 28px;
+      border-radius:18px;
+      text-decoration:none;
+      font-weight:600;
+      transition:0.3s ease;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,#1db954,#0f5132);
+      color:white;
+      box-shadow:0 10px 25px rgba(29,185,84,0.25);
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-3px);
+    }
+
+    .btn-secondary{
+      background:rgba(255,255,255,0.7);
+      color:#111;
+      border:1px solid rgba(255,255,255,0.4);
+      backdrop-filter:blur(12px);
+    }
+
+    .glass-card{
+      background:rgba(255,255,255,0.55);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+      border-radius:32px;
+      padding:40px;
+      box-shadow:0 15px 35px rgba(0,0,0,0.08);
+      border:1px solid rgba(255,255,255,0.35);
+    }
+
+    .hero-ui{
+      display:flex;
+      justify-content:center;
+    }
+
+    .mockup{
+      width:340px;
+      background:rgba(255,255,255,0.65);
+      border-radius:40px;
+      padding:30px;
+      box-shadow:0 15px 40px rgba(0,0,0,0.1);
+      backdrop-filter:blur(18px);
+    }
+
+    .mockup h3{
+      color:#18b34a;
+      margin-bottom:25px;
+      font-size:26px;
+    }
+
+    .item{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:18px;
+      background:rgba(255,255,255,0.7);
+      padding:14px 16px;
+      border-radius:16px;
+    }
+
+    .item span{
+      color:#333;
+      font-weight:500;
+    }
+
+    .counter{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .counter button{
+      width:30px;
+      height:30px;
+      border:none;
+      border-radius:10px;
+      background:#1db954;
+      color:white;
+      font-size:18px;
+      cursor:pointer;
+    }
+
+    section{
+      padding:100px 40px;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .section-title h2{
+      font-size:52px;
+      color:#111;
+      margin-bottom:15px;
+    }
+
+    .section-title p{
+      color:#666;
+      font-size:20px;
+    }
+
+    .features{
+      max-width:1200px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:25px;
+    }
+
+    .feature-card{
+      background:rgba(255,255,255,0.65);
+      padding:35px;
+      border-radius:28px;
+      backdrop-filter:blur(18px);
+      border:1px solid rgba(255,255,255,0.35);
+      box-shadow:0 10px 25px rgba(0,0,0,0.05);
+    }
+
+    .feature-card h3{
+      color:#18b34a;
+      margin-bottom:15px;
+      font-size:24px;
+    }
+
+    .feature-card p{
+      color:#555;
+      line-height:1.7;
+    }
+
+    footer{
+      padding:50px 20px;
+      text-align:center;
+      color:#666;
+    }
+
+    @media(max-width:900px){
+
+      .hero{
+        grid-template-columns:1fr;
+      }
+
+      .hero-text{
+        text-align:center;
+      }
+
+      .hero-text h1{
+        font-size:54px;
+      }
+
+      .hero-text p{
+        font-size:20px;
+      }
+
+      .buttons{
+        justify-content:center;
+      }
+
+      .hero-ui{
+        margin-top:20px;
+      }
+
+      .section-title h2{
+        font-size:40px;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="hero">
+
+    <div class="hero-text">
+
+      <h1>Smart Solar Planning Made Simple</h1>
+
+      <p>
+        Calculate the exact solar panels, inverter, and battery backup
+        you need for your home or office in seconds.
+      </p>
+
+      <div class="buttons">
+        <a href="#" class="btn btn-primary">
+          Download App
+        </a>
+
+        <a href="#features" class="btn btn-secondary">
+          Learn More
+        </a>
+      </div>
+
+    </div>
+
+    <div class="hero-ui">
+
+      <div class="mockup">
+
+        <h3>Solarcu</h3>
+
+        <div class="item">
+          <span>Refrigerator</span>
+
+          <div class="counter">
+            <button>-</button>
+            <span>1</span>
+            <button>+</button>
+          </div>
+        </div>
+
+        <div class="item">
+          <span>Air Conditioner</span>
+
+          <div class="counter">
+            <button>-</button>
+            <span>2</span>
+            <button>+</button>
+          </div>
+        </div>
+
+        <div class="item">
+          <span>LED TV</span>
+
+          <div class="counter">
+            <button>-</button>
+            <span>3</span>
+            <button>+</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</header>
+
+<section id="features">
+
+  <div class="section-title">
+    <h2>Why Solarcu?</h2>
+
+    <p>
+      Designed to make solar planning easy, fast, and accurate.
+    </p>
+  </div>
+
+  <div class="features">
+
+    <div class="feature-card">
+      <h3>24hr Backup Calculator</h3>
+
+      <p>
+        Instantly estimate the battery backup capacity needed
+        to power your home or office.
+      </p>
+    </div>
+
+    <div class="feature-card">
+      <h3>Accurate Solar Sizing</h3>
+
+      <p>
+        Get recommendations for solar panels, inverters,
+        and battery systems based on your usage.
+      </p>
+    </div>
+
+    <div class="feature-card">
+      <h3>Home & Office Modes</h3>
+
+      <p>
+        Switch between home and office appliance calculations
+        with an intuitive interface.
+      </p>
+    </div>
+
+    <div class="feature-card">
+      <h3>Modern Liquid Glass Design</h3>
+
+      <p>
+        Enjoy a beautiful and responsive user experience
+        inspired by modern Apple-style interfaces.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<footer>
+  © 2026 Solarcu • Powered by Erepal Technologies
+</footer>
+
+</body>
+</html>
